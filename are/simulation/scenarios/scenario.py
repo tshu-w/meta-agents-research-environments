@@ -1020,7 +1020,7 @@ class Scenario(metaclass=AutoDataclass):
         if type_str is None and value is None:
             return None
 
-        if value is None or value == "":
+        if value is None or (value == "" and type_str != "str"):
             if Scenario._type_allows_none(type_str):
                 return None
             raise ValueError(f"Non-optional type {type_str} cannot be None or empty.")
